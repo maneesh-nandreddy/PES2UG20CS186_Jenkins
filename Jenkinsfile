@@ -11,6 +11,12 @@ stages {
         steps {
             sh './PES2UG20CS186-1'
         }
+     stage('Deploy') {
+        steps {
+            // deployment code
+            sh 'mvn deploy'
+            echo 'deployment successful'
+        }    
     }
 }
 
