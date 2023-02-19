@@ -12,23 +12,14 @@ stages {
             sh './PES2UG20CS186-1'
         }
     }
-    
-    stage('Deploy') {
-        steps {
-            // deployment code
-            sh 'mvn deploy'
-            echo 'deployment successful'
-        }
-    }
 }
 
 post {
     always {
-        script {
-            if (currentBuild.result == "FAILURE") {
-                echo "Pipeline failed"
-            }
-        }
+        echo 'Pipeline completed'
+    }
+    failure {
+        echo 'Pipeline failed'
     }
 }
 }
